@@ -14,6 +14,5 @@
     'gender' => '女性'
   ];
 
-  echo $myWife['name'];
-  echo "{$myWife['age']}歳・{$myWife['gender']}";
+  echo "{$myWife['name']}\n{$myWife['age']}歳・{$myWife['gender']}";
   ?>
