@@ -8,3 +8,14 @@
 // ○○点は「○」です。
 
 $score = 100; //いくつかのケースで動作確認を行ってください。
+
+if($score >= 80){
+  echo "{$score}点は優です";
+}elseif($score < 80 && $score >= 60){
+  echo "{$score}点は良です";
+}elseif($score < 60 && $score >= 40){
+  echo "{$score}点は可です";
+}else{
+  echo "{$score}点は不可です";
+}
+?>
