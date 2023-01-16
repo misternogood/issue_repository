@@ -14,5 +14,7 @@
     'gender' => '女性'
   ];
 
-  echo "{$myWife['name']}\n{$myWife['age']}歳・{$myWife['gender']}";
+  echo $myWife['name'];
+  echo PHP_EOL;
+  echo "{$myWife['age']}歳・{$myWife['gender']}";
   ?>
