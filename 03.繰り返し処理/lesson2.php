@@ -10,5 +10,14 @@
 // フォーマット
 // ○○の首都は○○です。
 
+$countries = [
+  '日本' => '東京',
+  'アメリカ' => 'ワシントン',
+  'イギリス' => 'ロンドン',
+  'フランス' => 'パリ',
+];
 
-
+foreach($countries as $country => $capital){
+  echo $country."の首都は".$capital."です。<br>";
+}
+?>
