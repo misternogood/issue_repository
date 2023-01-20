@@ -9,3 +9,26 @@
 // ・現在日時から３日後（yyyy年mm月dd日 H時i分s秒）
 // ・現在日時から１２時間前（yyyy年mm月dd日 H時i分s秒）
 // ・2020年元旦から現在までの経過日数 (ddd日)
+$weekday = array( '日' , '月' , '火' , '水' , '木' , '金' , '土' ) ;
+$timestamp = time() ;
+// 現在日時
+echo date( "Y年m月d日" , $timestamp ) ;
+echo "({$weekday[ date('w') ]}曜日)" ;
+echo "<br>";
+
+// ・現在日時から３日後（yyyy年mm月dd日 H時i分s秒）
+$timestamp = strtotime( "+3 day" ) ;
+echo date( "Y年m月d日 H時i分s秒" , $timestamp ) ;
+echo "<br>";
+
+// ・現在日時から１２時間前（yyyy年mm月dd日 H時i分s秒）
+$timestamp = strtotime( "-12 hour" ) ;
+echo date( "Y年m月d日 H時i分s秒" , $timestamp ) ;
+echo "<br>";
+
+// ・2020年元旦から現在までの経過日数 (ddd日)
+$today = new DateTime('now');
+$day = new DateTime('2020-01-01');
+$diff = $day->diff($today);
+echo $diff->format('%a日');
+?>
