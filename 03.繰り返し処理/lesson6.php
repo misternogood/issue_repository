@@ -19,6 +19,22 @@ $arr = [
     'r2' => ['c1' => 7, 'c2' => 8, 'c3' => 12],
     'r3' => ['c1' => 25, 'c2' => 9, 'c3' => 130]
 ];
+// 横合計
+$rowSum = [
+    'r1' => array_sum($arr['r1']),
+    'r2' => array_sum($arr['r2']),
+    'r3' => array_sum($arr['r3']),
+];
+// 縦合計
+$lineSum = [
+    'r1' => array_sum($arr['r1']),
+    'r2' => array_sum($arr['r2']),
+    'r3' => array_sum($arr['r3']),
+];
+$sumTotal = 0;
+foreach($rowSum as $sum){
+    $sumTotal += $sum;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -36,6 +52,31 @@ th, td {
 </style>
 </head>
 <body>
-    <!-- ここにテーブル表示 -->
+  <!-- ここにテーブル表示 -->
+  <table>
+    <tr>
+      <th></th>
+      <th>c1</th>
+      <th>c2</th>
+      <th>c3</th>
+      <th>横合計</th>
+    </tr>
+    <?php foreach($arr as $rowKey => $rowArr): ?>
+      <tr>
+        <td><?php echo $rowKey ?></td>
+        <?php foreach($rowArr as $key => $value) : ?>
+        <td><?php echo $value; ?></td>
+        <?php endforeach ?>
+        <td><?php echo $rowSum[$rowKey]; ?></td>
+      </tr>
+    <?php endforeach ?>
+      <tr>
+        <th>縦合計</th>
+        <?php foreach($lineSum as $key => $sum) :?>
+          <td><?php echo $sum; ?></td>
+        <?php endforeach ?>
+        <td><?php echo $sumTotal; ?></td>
+      </tr>
+  </table>
 </body>
 </html>
