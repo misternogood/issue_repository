@@ -27,6 +27,17 @@
 function nabeatsu($i)
 {
     // この関数内に処理を記述
+  for($n = 1; $n <= $i; $n ++){
+    if($n % 3 === 0 && $n % 5 === 0){
+        echo $n.'アホわん<br>';
+    }elseif($n % 3 === 0){
+        echo $n.'アホ<br>';
+    }elseif($n % 5 === 0 ){
+        echo $n.'わん<br>';
+    }else{
+        echo $n.'<br>';
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -38,6 +49,7 @@ function nabeatsu($i)
 <body>
     <section>
         <!-- ここに結果表示 -->
+        <?php echo nabeatsu(15) ?>
     </section>
 </body>
 </html>
