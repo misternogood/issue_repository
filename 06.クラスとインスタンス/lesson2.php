@@ -28,3 +28,32 @@
 // それぞれの関数を使用して下記のフォーマットで出力してください。
 
 // 〇〇さんの身長は〇〇mなので平均体重は〇〇kgです。 現在の体重は〇〇kgです。
+
+require('/Users/takaharashouma/projects/issue_repository/06.クラスとインスタンス/lesson1.php');
+
+class Patient extends Person{
+  public float $height;
+  public float $weight;
+
+  function __construct($name,$age,$gender,$height,$weight){
+    $this->name = $name;
+    $this->age = $age;
+    $this->gender = $gender;
+    $this->height = $height;
+    $this->weight = $weight;
+  }
+  public function calculateStandardWeight(): float{
+    return $this->height * $this->height * 22 / 10000;
+  }
+  public function getHeight(){
+    return $this->height/100;
+  }
+  public function getWeight(){
+    return $this->weight;
+  }
+}
+$yamada = new Patient('山田', 20,'男性',175,60);
+
+echo $yamada->name.'さんの身長は'.$yamada->getHeight().'mなので平均体重は'.$yamada->calculateStandardWeight().'kgです。現在の体重は'.$yamada->getWeight().'kgです。';
+
+?>
