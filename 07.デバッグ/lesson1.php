@@ -5,7 +5,7 @@
 
 if (!empty($_POST)) {
     $lastName = $_POST['last_name'];
-    $firstName= $_POST['first_name'];
+    $firstName = $_POST['first_name'];
     if ($lastName != null && $firstName != null) {
         echo '私の名前は'.$lastName.$firstName.'です。';
     }
@@ -24,7 +24,7 @@ if (!empty($_POST)) {
         <label>姓</label>
         <input type="text" name="last_name"/>
         <label>名</label>
-        <input type="text" name="first_nae" />
+        <input type="text" name="first_name"/>
         <input type="submit" value="送信する"/>
     </form>
     </section>

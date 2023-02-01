@@ -53,7 +53,8 @@ if (! empty($_POST)) {
     $firstName        = $_POST['first_name'];
     $age              = $_POST['age'];
     $hobby            = $_POST['hobby'];
-    if ($selfIntroduction) {
+    $selfIntroduction = new SelfIntroduction($_POST['last_name'],$_POST['first_name'],$_POST['age'],$_POST['hobby']);
+    if (! $selfIntroduction) {
         echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
         echo '<br>';
         echo '趣味は'. $selfIntroduction->getHobby().'です。';
@@ -68,7 +69,7 @@ if (! empty($_POST)) {
 </head>
 <body>
     <section>
-    <form action='./debug02.php' method="post">
+    <form action='./debug.php' method="post">
         <label>姓</label>
         <input type="text" name="last_name"/>
         <label>名</label>

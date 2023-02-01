@@ -25,6 +25,7 @@ class Player
                 break;
             case 2:
                 $janken = 'チョキ';
+                break;
             case 3:
                 $janken = 'パー';
                 break;
@@ -35,7 +36,7 @@ class Player
     }
 }
 
-class Me
+class Me extends Player
 {
     private $name;
     private $choice;
@@ -57,7 +58,7 @@ class Me
     }
 }
 
-class Enemy
+class Enemy extends Player
 {
     private $choice;
     public function __construct()
@@ -81,7 +82,7 @@ class Battle
         $this->second = $enemy->getChoice();
     }
 
-    private function judge(): int
+    private function judge(): string
     {
         if ($this->first === $this->second) {
             return '引き分け';
@@ -112,14 +113,14 @@ class Battle
         }
     }
 
-    private function countVictories()
+    public function countVictories()
     {
         if ($this->judge() === '勝ち') {
-            $_SESSION['result'] = 1;
+            return $_SESSION['result'] = 1;
         }
     }
 
-    public function getVitories()
+    public function getVictories()
     {
         return $_SESSION['result'];
     }
@@ -139,9 +140,10 @@ if (! empty($_POST)) {
     echo '<br>';
     $battle = new Battle($me, $enemy);
     echo '勝敗は'.$battle->showResult().'です。';
+    $battle->countVictories();
     if ($battle->showResult() === '勝ち') {
         echo '<br>';
-        echo $battle->getVitories().'回目の勝利です。';
+        echo $battle->getVictories().'回目の勝利です。';
     }
 }
 
@@ -154,7 +156,7 @@ if (! empty($_POST)) {
 </head>
 <body>
     <section>
-    <form action='./debug03.php'>
+    <form action='./debug.php' method="post">
         <label>姓</label>
         <input type="text" name="last_name" value="<?php echo '山田' ?>" />
         <label>名</label>
