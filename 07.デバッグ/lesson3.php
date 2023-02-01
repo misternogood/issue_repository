@@ -136,8 +136,8 @@ if (! empty($_POST)) {
     echo '<br>';
     $battle = new Battle($me, $enemy);
     echo '勝敗は'.$battle->showResult().'です。';
-    $battle->countVictories();
     if ($battle->showResult() === '勝ち') {
+        $battle->countVictories();
         echo '<br>';
         echo $battle->getVictories().'回目の勝利です。';
     }else{
