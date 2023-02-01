@@ -10,9 +10,7 @@
 // $_SESSIONの挙動やswitch文については調べてみてください。
 
 
-if (! isset($_SESSION['result'])) {
-    $_SESSION['result'] = 0;
-}
+session_start();
 
 class Player
 {
@@ -115,9 +113,7 @@ class Battle
 
     public function countVictories()
     {
-        if ($this->judge() === '勝ち') {
-            return $_SESSION['result'] = 1;
-        }
+      return $_SESSION['result'] ++;
     }
 
     public function getVictories()
@@ -144,6 +140,8 @@ if (! empty($_POST)) {
     if ($battle->showResult() === '勝ち') {
         echo '<br>';
         echo $battle->getVictories().'回目の勝利です。';
+    }else{
+        $_SESSION['result'] = 0;
     }
 }
 
