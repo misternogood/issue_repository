@@ -12,7 +12,7 @@
 
 -- 問4
 -- 人口が10万人以上の国をすべて抽出してください。
-  SELECT * FROM countries WHERE population > 100000;NAME
+  SELECT * FROM countries WHERE population >= 100000;
 
 -- 問5
 -- 平均寿命が56歳から76歳の国をすべて抽出してください。
@@ -52,7 +52,7 @@
 
 -- 問14
 -- 全ての地方をグループ化せずに表示してください。
-  SELECT region FROM countries;
+  SELECT DISTINCT(region) FROM countries;
 
 -- 問15
 -- 国名と人口を以下のように表示させてください。シングルクォートに注意してください。
@@ -69,7 +69,7 @@
 
 -- 問18
 -- 平均寿命が長い順、独立記念日が新しい順に国を表示させてください。
-  SELECT name,life_expectancy,indep_year FROM countries ORDER BY life_expectancy DESC, indep_year ASC;
+  SELECT name,life_expectancy,indep_year FROM countries ORDER BY life_expectancy DESC, indep_year DESC;
 
 -- 問19
 -- 全ての国の国コードの一文字目と国名を表示させてください。
@@ -113,11 +113,11 @@
 
 -- 問29
 -- 全ての有名人の名前と国名をテーブル結合せずに出力してください。
-  SELECT celebrities.name,countries.name FROM celebrities,countries WHERE celebrities.country_code = countries.code;
+  SELECT name,(SELECT name FROM countries WHERE countries.code = celebrities.country_code )AS '国名' FROM celebrities;
 
 -- 問30
 -- 最年長が50歳以上かつ最年少が30歳以下の国を表示させてください。
-  SELECT countries.code,Maxa AS 'MAX(ce.age)',Mina AS 'MIN(ce.age)' from countries INNER JOIN (SELECT country_code,MAX(age) AS Maxa FROM celebrities WHERE age >=50 GROUP BY country_code) AS ceA ON countries.code = ceA.country_code INNER JOIN (SELECT country_code,MIN(age) AS 
+  SELECT countries.code, Maxa AS 'MAX(ce.age)', Mina AS 'MIN(ce.age)' FROM countries INNER JOIN( SELECT country_code, MAX(age) AS Maxa FROM celebrities WHERE age >= 50 GROUP BY country_code ) AS ceA ON countries.code = ceA.country_code INNER JOIN( SELECT country_code, MIN(age) AS Mina FROM celebrities WHERE age <= 30 GROUP BY country_code ) AS ceB ON countries.code = ceB.country_code;
 
 -- 問31
 -- 1991年生まれと、1981年生まれの有名人が何人いるか調べてください。ただし、日付関数は使用せず、UNION句を使用してください。
