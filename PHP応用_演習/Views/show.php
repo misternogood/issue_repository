@@ -15,9 +15,9 @@
 <?php
   require_once(ROOT_PATH.'/Controllers/ContactController.php');
   $controller = new ContactController();
-  $controller->create();
-  $controller->delete();
-  $params = $controller->index();
+  $params = $controller->show();
+  $controller->edit($params['contact']['id']);
+  $controller->backContact();
 ?>
 <body>
   <div class="main" >
@@ -26,25 +26,25 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color:lightgray;">
         <h1 class="index_level1" class="navbar-brand">Casteria</h1>
       </div>
-      <form action="contact.php" method="POST" >
+      <form action="show.php?id=<?=$params['contact']['id']?>" method="POST">
         <div class="form-group">
           <!-- エラーメッセージ -->
         <?php
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['update'])) {
               if ($_SESSION['nameError'] !== true) {
                 echo $_SESSION['nameError'];
               }
             }
         ?>
         <?php
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['update'])) {
               if ($_SESSION['kanaError'] !== true) {
                 echo $_SESSION['kanaError'];
               }
             }
         ?>
         <?php
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['update'])) {
               if ($_SESSION['telError'] !== true) {
                 echo $_SESSION['telError'];
               }
@@ -52,14 +52,14 @@
         ?>
         <br>
         <?php
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['update'])) {
               if ($_SESSION['emailError'] !== true) {
                 echo $_SESSION['emailError'];
               }
             }
         ?>
         <?php
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['update'])) {
               if ($_SESSION['bodyError'] !== true) {
                 echo $_SESSION['bodyError'];
               }
@@ -67,56 +67,32 @@
         ?>
           <div class='form-text-wrap'>
             <label class="form-text">氏名</label>
-            <input class="name" type="text"name="name"placeholder="※必須"  value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>">
+            <input class="name" type="text"name="name"placeholder="※必須"  value="<?php echo $params["contact"]["name"] ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">フリガナ</label>
-            <input class="kana" type="text"name="kana"placeholder="※必須" value="<?php echo isset($_SESSION['kana']) ? $_SESSION['kana'] : ''; ?>">
+            <input class="kana" type="text"name="kana"placeholder="※必須" value="<?php echo $params["contact"]["kana"] ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">電話番号</label>
-            <input class="tel" type="text"name="tel"placeholder="任意" value="<?php echo isset($_SESSION['tel']) ? $_SESSION['tel'] : ''; ?>">
+            <input class="tel" type="text"name="tel"placeholder="任意" value="<?php echo $params["contact"]["tel"] ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">メールアドレス</label>
-            <input class="email" type="email"name="email"placeholder="※必須" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
+            <input class="email" type="email"name="email"placeholder="※必須" value="<?php echo $params["contact"]["email"] ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">お問い合わせ内容</label>
-            <textarea class="body" name="body" placeholder="※必須" ><?php echo isset($_SESSION['body']) ? $_SESSION['body']: ''; ?></textarea>
+            <textarea class="body" name="body" placeholder="※必須" ><?php echo $params["contact"]["body"] ?></textarea>
+          </div>
+          <div class="message">上記の内容でよろしいですか？
           </div>
         </div>
-        <div class='register-btn-group'>
-          <input type="submit" name="submit" class="register-btn">
-        </div> 
+        <div class="register-btn-group">
+          <input type="submit" name="show-back" value="キャンセル" >
+          <input type="submit" name="update" value="更新" >
+        </div>
       </form>
-    </div>
-    <div class="form-group">
-      <table class="table">
-        <tr>
-          <th>氏名</th>
-          <th>フリガナ</th>
-          <th>電話番号</th>
-          <th>メールアドレス</th>
-          <th>お問い合わせ内容</th>
-        </tr>
-        <?php foreach($params['contacts'] as $contact): ?>
-        <tr>
-          <td><?php echo $contact['name'] ?></td>
-          <td><?php echo $contact['kana'] ?></td>
-          <td><?php echo $contact['tel'] ?></td>
-          <td><?php echo $contact['email'] ?></td>
-          <td><?php echo nl2br($contact['body']) ?></td>
-          <td class='actions'>
-            <a href="show.php?id=<?=$contact['id'] ?>">編集</a>
-            <form action="contact.php" method="post" onSubmit="return check()">
-              <input type="hidden" name="delete_id" value="<?php echo $contact["id"]; ?>">
-              <input type="submit" value="削除" name="delete">
-            </form>
-          </td>
-        </tr>
-        <?php endforeach; ?>
-      </table>
     </div>
     <?php include("footer.php") ?>
   </div>

@@ -117,10 +117,53 @@
 		border-radius: 50%;
 	}
 
+	.indispensable {
+		font-size: 17px;
+		color: red;
+	}
 
+	.contact {
+		text-align: center;
+	}
 
-	/* ----contact.php------- */
+	/* 入力画面 */
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		margin: 0 auto;
+		padding-top: 20px;
+	}
 
+	.form-text-wrap {
+		margin: 15px;
+	}
+
+	.form-text {
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.register-btn-group {
+		display: flex;
+		justify-content: space-around;
+		width: 30%;
+		margin: 0 auto;
+	}
+
+	.register-btn {
+		width: 100%;
+		line-height: 48px;
+		font-size: 14px;
+		cursor: pointer;
+	}
+
+	/* 確認画面 */
+	.message {
+		font-size: 20px;
+		font-weight: bold;
+		margin: 10px;
+	}
 
 	/* アコーディオンメニュー全体のサイズ・位置 */
 	.ac {
@@ -251,4 +294,5 @@
 	.address-boxes {
 		display: none;
 	}
+
 }
