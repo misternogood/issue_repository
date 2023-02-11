@@ -109,6 +109,8 @@
           <td><?php echo nl2br($contact['body']) ?></td>
           <td class='actions'>
             <a href="show.php?id=<?=$contact['id'] ?>">編集</a>
+          </td>
+          <td>
             <form action="contact.php" method="post" onSubmit="return check()">
               <input type="hidden" name="delete_id" value="<?php echo $contact["id"]; ?>">
               <input type="submit" value="削除" name="delete">
@@ -120,5 +122,16 @@
     </div>
     <?php include("footer.php") ?>
   </div>
+  <script>
+  function check(){
+
+    if(window.confirm('削除してよろしいですか？')){
+      return true;
+    }else {
+      window.alert('キャンセルしました');
+      return false;
+    }
+  }
+</script>
 </body>
 </html>
