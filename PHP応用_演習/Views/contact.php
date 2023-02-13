@@ -113,7 +113,7 @@
           <td><?php echo htmlspecialchars($contact['kana']) ?></td>
           <td><?php echo htmlspecialchars($contact['tel']) ?></td>
           <td><?php echo htmlspecialchars($contact['email']) ?></td>
-          <td><?php echo htmlspecialchars(nl2br($contact['body'])) ?></td>
+          <td><?php echo nl2br(htmlspecialchars($contact['body'])) ?></td>
           <td class='actions'>
             <a href="show.php?id=<?=$contact['id'] ?>">編集</a>
           </td>
