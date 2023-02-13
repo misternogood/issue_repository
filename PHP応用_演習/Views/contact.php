@@ -18,6 +18,12 @@
   $controller->create();
   $controller->delete();
   $params = $controller->index();
+  $name = htmlspecialchars($_SESSION["name"]);
+  $kana = htmlspecialchars($_SESSION["kana"]);
+  $tel = htmlspecialchars($_SESSION["tel"]);
+  $email = htmlspecialchars($_SESSION["email"]);
+  $body = htmlspecialchars($_SESSION["body"]);
+
 ?>
 <body>
   <div class="main" >
@@ -92,7 +98,7 @@
         </div> 
       </form>
     </div>
-    <!-- お問い合わせ一覧 -->
+    お問い合わせ一覧
     <div class="form-group">
       <table class="table">
         <tr>

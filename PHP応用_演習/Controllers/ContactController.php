@@ -28,11 +28,11 @@ class ContactController {
       $emailError = true;
       $bodyError = true;
     
-      $_SESSION['name']= htmlspecialchars($_POST["name"]);
-      $_SESSION['kana']= htmlspecialchars($_POST["kana"]);
-      $_SESSION['tel']= htmlspecialchars($_POST["tel"]);
-      $_SESSION['email']= htmlspecialchars($_POST["email"]);
-      $_SESSION['body']= htmlspecialchars($_POST["body"]);
+      $_SESSION['name']= ($_POST["name"]);
+      $_SESSION['kana']= ($_POST["kana"]);
+      $_SESSION['tel']= ($_POST["tel"]);
+      $_SESSION['email']= ($_POST["email"]);
+      $_SESSION['body']= ($_POST["body"]);
 
       // 氏名
       if (empty($_SESSION['name'])) {
@@ -147,11 +147,11 @@ class ContactController {
       $emailError = true;
       $bodyError = true;
       $id = $_GET["id"];
-      $_SESSION['name']= htmlspecialchars($_POST["name"]);
-      $_SESSION['kana']= htmlspecialchars($_POST["kana"]);
-      $_SESSION['tel']= htmlspecialchars($_POST["tel"]);
-      $_SESSION['email']= htmlspecialchars($_POST["email"]);
-      $_SESSION['body']= htmlspecialchars($_POST["body"]);
+      $_SESSION['name']= ($_POST['name']);
+      $_SESSION['kana']= ($_POST['kana']);
+      $_SESSION['tel']= ($_POST['tel']);
+      $_SESSION['email']= ($_POST['email']);
+      $_SESSION['body']= ($_POST['body']);
 
       // 氏名
       if (empty($_SESSION['name'])) {

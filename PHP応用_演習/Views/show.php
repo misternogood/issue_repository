@@ -18,6 +18,13 @@
   $params = $controller->show();
   $controller->edit($params['contact']['id']);
   $controller->backContact();
+  if(isset($_POST['submit'])){
+    $_SESSION['name']= htmlspecialchars($_POST["name"]);
+    $_SESSION['kana']= htmlspecialchars($_POST["kana"]);
+    $_SESSION['tel']= htmlspecialchars($_POST["tel"]);
+    $_SESSION['email']= htmlspecialchars($_POST["email"]);
+    $_SESSION['body']= htmlspecialchars($_POST["body"]);
+  }
 ?>
 <body>
   <div class="main" >
