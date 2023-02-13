@@ -18,12 +18,11 @@
   $controller->create();
   $controller->delete();
   $params = $controller->index();
-  $name = htmlspecialchars($_SESSION["name"]);
-  $kana = htmlspecialchars($_SESSION["kana"]);
-  $tel = htmlspecialchars($_SESSION["tel"]);
-  $email = htmlspecialchars($_SESSION["email"]);
-  $body = htmlspecialchars($_SESSION["body"]);
-
+  $name = htmlspecialchars($_SESSION["name"],ENT_QUOTES | ENT_HTML5);
+  $kana = htmlspecialchars($_SESSION["kana"],ENT_QUOTES | ENT_HTML5);
+  $tel = htmlspecialchars($_SESSION["tel"],ENT_QUOTES | ENT_HTML5);
+  $email = htmlspecialchars($_SESSION["email"],ENT_QUOTES | ENT_HTML5);
+  $body = htmlspecialchars($_SESSION["body"],ENT_QUOTES | ENT_HTML5);
 ?>
 <body>
   <div class="main" >
@@ -110,11 +109,11 @@
         </tr>
         <?php foreach($params['contacts'] as $contact): ?>
         <tr>
-          <td><?php echo $contact['name'] ?></td>
-          <td><?php echo $contact['kana'] ?></td>
-          <td><?php echo $contact['tel'] ?></td>
-          <td><?php echo $contact['email'] ?></td>
-          <td><?php echo nl2br($contact['body']) ?></td>
+          <td><?php echo htmlspecialchars($contact['name']) ?></td>
+          <td><?php echo htmlspecialchars($contact['kana']) ?></td>
+          <td><?php echo htmlspecialchars($contact['tel']) ?></td>
+          <td><?php echo htmlspecialchars($contact['email']) ?></td>
+          <td><?php echo htmlspecialchars(nl2br($contact['body'])) ?></td>
           <td class='actions'>
             <a href="show.php?id=<?=$contact['id'] ?>">編集</a>
           </td>

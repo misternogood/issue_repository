@@ -17,6 +17,11 @@
   $controller = new ContactController();
   $controller->confirm();
   $controller->back();
+  $name = htmlspecialchars($_SESSION["name"],ENT_QUOTES | ENT_HTML5);
+  $kana = htmlspecialchars($_SESSION["kana"],ENT_QUOTES | ENT_HTML5);
+  $tel = htmlspecialchars($_SESSION["tel"],ENT_QUOTES | ENT_HTML5);
+  $email = htmlspecialchars($_SESSION["email"],ENT_QUOTES | ENT_HTML5);
+  $body = htmlspecialchars($_SESSION["body"],ENT_QUOTES | ENT_HTML5);
 ?>
 <body>
   <div class="main" >
@@ -30,23 +35,23 @@
           <div class='form-text-wrap'>
             <label class="form-text">氏名</label>
           </div>
-          <?php echo $_SESSION['name']; ?>
+          <?php echo $name; ?>
           <div class='form-text-wrap'>
             <label class="form-text">フリガナ</label>
           </div>
-          <?php echo $_SESSION['kana']; ?>
+          <?php echo $kana; ?>
           <div class='form-text-wrap'>
             <label class="form-text">電話番号</label>
           </div>
-          <?php echo $_SESSION['tel']; ?>
+          <?php echo $tel; ?>
           <div class='form-text-wrap'>
             <label class="form-text">メールアドレス</label>
           </div>
-          <?php echo $_SESSION['email']; ?>
+          <?php echo $email; ?>
           <div class='form-text-wrap'>
             <label class="form-text">お問い合わせ内容</label>
           </div>
-          <?php echo nl2br($_SESSION['body']); ?>
+          <?php echo nl2br($body); ?>
           <div class="message">上記の内容でよろしいですか？
           </div>
         </div>
