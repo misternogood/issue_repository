@@ -28,11 +28,11 @@ class ContactController {
       $emailError = true;
       $bodyError = true;
     
-      $_SESSION['name']= htmlspecialchars($_POST['name']);
-      $_SESSION['kana']= htmlspecialchars($_POST['kana']);
-      $_SESSION['tel']= htmlspecialchars($_POST['tel']);
-      $_SESSION['email']= htmlspecialchars($_POST['email']);
-      $_SESSION['body']= htmlspecialchars($_POST['body']);
+      $_SESSION['name']= htmlspecialchars($_POST["name"]);
+      $_SESSION['kana']= htmlspecialchars($_POST["kana"]);
+      $_SESSION['tel']= htmlspecialchars($_POST["tel"]);
+      $_SESSION['email']= htmlspecialchars($_POST["email"]);
+      $_SESSION['body']= htmlspecialchars($_POST["body"]);
 
       // 氏名
       if (empty($_SESSION['name'])) {
@@ -57,7 +57,7 @@ class ContactController {
         $kanaError = "フリガナはカタカナで入力してください";
        }
       // 電話番号
-      if(!preg_match("/^[0-9]+$/", $tel) && empty(!$tel)) {
+      if(!preg_match("/^[0-9]+$/", $_SESSION['tel']) && empty(!$_SESSION['tel'])) {
         $hasError = false;
         $telError = "電話番号は半角数字のみ(ハイフンなし)で入力してください";
       }
@@ -147,11 +147,11 @@ class ContactController {
       $emailError = true;
       $bodyError = true;
       $id = $_GET["id"];
-      $_SESSION['name']= htmlspecialchars($_POST['name']);
-      $_SESSION['kana']= htmlspecialchars($_POST['kana']);
-      $_SESSION['tel']= htmlspecialchars($_POST['tel']);
-      $_SESSION['email']= htmlspecialchars($_POST['email']);
-      $_SESSION['body']= htmlspecialchars($_POST['body']);
+      $_SESSION['name']= htmlspecialchars($_POST["name"]);
+      $_SESSION['kana']= htmlspecialchars($_POST["kana"]);
+      $_SESSION['tel']= htmlspecialchars($_POST["tel"]);
+      $_SESSION['email']= htmlspecialchars($_POST["email"]);
+      $_SESSION['body']= htmlspecialchars($_POST["body"]);
 
       // 氏名
       if (empty($_SESSION['name'])) {
@@ -176,7 +176,7 @@ class ContactController {
         $kanaError = "フリガナはカタカナで入力してください";
        }
       // 電話番号
-      if(!preg_match("/^[0-9]+$/", $tel) && empty(!$tel)) {
+      if(!preg_match("/^[0-9]+$/", $_SESSION['tel']) && empty(!$_SESSION['tel'])) {
         $hasError = false;
         $telError = "電話番号は半角数字のみ(ハイフンなし)で入力してください";
       }

@@ -65,6 +65,7 @@
               }
             }
         ?>
+          <!-- 入力画面 -->
           <div class='form-text-wrap'>
             <label class="form-text">氏名</label>
             <input class="name" type="text"name="name"placeholder="※必須"  value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>">
@@ -91,6 +92,7 @@
         </div> 
       </form>
     </div>
+    <!-- お問い合わせ一覧 -->
     <div class="form-group">
       <table class="table">
         <tr>
