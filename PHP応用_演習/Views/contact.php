@@ -74,23 +74,23 @@
           <!-- 入力画面 -->
           <div class='form-text-wrap'>
             <label class="form-text">氏名</label>
-            <input class="name" type="text"name="name"placeholder="※必須"  value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>">
+            <input class="name" type="text"name="name"placeholder="※必須"  value="<?php echo isset($name) ? $name : ''; ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">フリガナ</label>
-            <input class="kana" type="text"name="kana"placeholder="※必須" value="<?php echo isset($_SESSION['kana']) ? $_SESSION['kana'] : ''; ?>">
+            <input class="kana" type="text"name="kana"placeholder="※必須" value="<?php echo isset($kana) ? $kana : ''; ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">電話番号</label>
-            <input class="tel" type="text"name="tel"placeholder="任意" value="<?php echo isset($_SESSION['tel']) ? $_SESSION['tel'] : ''; ?>">
+            <input class="tel" type="text"name="tel"placeholder="任意" value="<?php echo isset($tel) ? $tel : ''; ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">メールアドレス</label>
-            <input class="email" type="email"name="email"placeholder="※必須" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
+            <input class="email" type="email"name="email"placeholder="※必須" value="<?php echo isset($email) ? $email : ''; ?>">
           </div>
           <div class='form-text-wrap'>
             <label class="form-text">お問い合わせ内容</label>
-            <textarea class="body" name="body" placeholder="※必須" ><?php echo isset($_SESSION['body']) ? $_SESSION['body']: ''; ?></textarea>
+            <textarea class="body" name="body" placeholder="※必須" ><?php echo isset($body) ? $body: ''; ?></textarea>
           </div>
         </div>
         <div class='register-btn-group'>
